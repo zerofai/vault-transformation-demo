@@ -81,7 +81,7 @@ Enable and Configure Transformation
 1. Create Tranform
 ```
 vault write transform/transformation/creditcard-numeric \
-type=fpe
+type=fpe \
 template=builtin/creditcardnumber \
 allowed_roles=payments \
 tweak_source=internal
@@ -119,7 +119,7 @@ alphabet="0123456789._%+~#@&/,=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW
 vault write transform/template/creditcard-to-symbolnumericalpha \
 type=regex \
 pattern='([0-9A-Z._%+~#@&/,=$]{4})-([0-9A-Z._%+~#@&/,=$]{4})-([0-9A-Z._%+~#@&/,=$]{4})-([0-9A-Z._%+~#@&/,=$]{4})' \
-alphabet=symbolnumeric
+alphabet=symbolnumericalpha
 ```
 
 3. Create Transform
@@ -155,11 +155,11 @@ value=B7Y9-YMEZ-GO4J-H7QG
 
 ```
 vault write transform/encode/payments \
-transformation=transform-to-symbolnumeric \
+transformation=creditcard-symbolnumericalpha \
 value=1234-4321-5678-4567
 
 vault write transform/decode/payments \
-transformation=transform-to-symbolnumeric \
+transformation=creditcard-symbolnumericalpha \
 value="141@-8@/5-=,+1-064."
 ```
 
@@ -167,7 +167,7 @@ value="141@-8@/5-=,+1-064."
 
 1. Create Alphabet
 ```
-vault write transform/alphabet/symbolnumericalpha \
+vault write transform/alphabet/localemailaddress \
 alphabet=".@0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ```
 
