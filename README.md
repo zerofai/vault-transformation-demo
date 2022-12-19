@@ -118,7 +118,7 @@ alphabet="0123456789._%+~#@&/,=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW
 ```
 vault write transform/template/creditcard-to-symbolnumericalpha \
 type=regex \
-pattern='([0-9A-Z._%+~#@&/,=$]{4})-([0-9A-Z._%+~#@&/,=$]{4})-([0-9A-Z._%+~#@&/,=$]{4})-([0-9A-Z._%+~#@&/,=$]{4})' \
+pattern='([0-9A-Za-z._%+~#@&/,=$]{4})-([0-9A-Za-z._%+~#@&/,=$]{4})-([0-9A-Za-z._%+~#@&/,=$]{4})-([0-9A-Za-z._%+~#@&/,=$]{4})' \
 alphabet=symbolnumericalpha
 ```
 
